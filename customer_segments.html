@@ -12176,7 +12176,6 @@ div#notebook {
 <span class="n">corr</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span>
 
 <span class="c1"># put the correlation between each pair of variables on each graph</span>
-<span class="c1"># this was suggested by a previous reviewer</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">triu_indices_from</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)):</span>
     <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="k">corr</span>[i, j], (0.8, 0.8), xycoords=&quot;axes fraction&quot;, ha=&quot;center&quot;, va=&quot;center&quot;)
 </pre></div>
@@ -17926,7 +17925,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># initializing the list of outlier indices, so outliers can be added for the loop</span>
@@ -18658,7 +18657,7 @@ Repeat outliers:  [154, 65, 75, 66, 128]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
@@ -19083,7 +19082,7 @@ RU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display sample log-data after having a PCA transformation applied</span>
@@ -19171,7 +19170,7 @@ RU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Apply PCA by fitting the good data with only two dimensions</span>
@@ -19204,7 +19203,7 @@ RU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display sample log-data after applying PCA transformation in two dimensions</span>
@@ -19271,7 +19270,7 @@ RU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Create a biplot</span>
@@ -19286,11 +19285,11 @@ RU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11d905450&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12030aad0&gt;</pre>
 </div>
 
 </div>
@@ -20360,8 +20359,8 @@ AAAAAHQtAiIAAAAAXYuACAAAAEDXIiACAAAA0LX+fx7rOE/fv7w4AAAAAElFTkSuQmCC
 <p>The main advantage to K-Means clustering is computational efficiency, which is O(n), which allows for scalability to very large data sets. The disadvantage of K-Means is that it assumes clusters of similar size, and that features within clusters are independent and have equal variance (and thus clusters are spherical). Data that do not roughly fit these assumptions will be clustered sub-optimally.</p>
 <p>One advantage to Gaussian Mixture Model clustering is that it's much more flexible with cluster covariance than K-Means clustering - it doesn't assume that features in a cluster have the same variance, and thus can produce more diverse cluster shapes than just spheres.</p>
 <p>Another advantage to Gaussian Mixture Model clustering is that it gives continuous probabilities for each point's membership in each cluster, and thus allows for a more nuanced view of cluster membership than K-Means, which simply returns the mostly likely cluster, as well as allowing for cluster overlap.</p>
-<p>The disadvantage to Gaussian Mixture Model clustering is it's lack of scalability to very large data sets.</p>
-<p>Given that our data set is relatively small (~400 data points after outlier removal), and not likely to grow exponentially in the future, the advantages of Gaussian Mixture Model clustering outweigh its disadvantages, so we'll use that.</p>
+<p>The disadvantage to Gaussian Mixture Model clustering is its lack of scalability to very large data sets.</p>
+<p>Given that our data set is relatively small (~400 data points after outlier removal), and not likely to grow much larger in the future, the advantages of Gaussian Mixture Model clustering outweigh its disadvantages, so we'll use that.</p>
 
 </div>
 </div>
@@ -20389,7 +20388,7 @@ AAAAAHQtAiIAAAAAXYuACAAAAEDXIiACAAAA0LX+fx7rOE/fv7w4AAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GMM</span>
@@ -20476,7 +20475,7 @@ AAAAAHQtAiIAAAAAXYuACAAAAEDXIiACAAAA0LX+fx7rOE/fv7w4AAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display the results of the clustering from implementation</span>
@@ -21222,7 +21221,7 @@ TeY4b/U0PAAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Inverse transform the centers</span>
@@ -21343,7 +21342,7 @@ Probability of Sample 2: [ 0.99850859  0.00149141]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display the predictions</span>
@@ -21462,7 +21461,7 @@ Sample point 2 predicted to be in Cluster 0
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display the clustering results based on &#39;Channel&#39; data</span>
